@@ -74,14 +74,6 @@ float funFactorial (float primernum);
  */
 float funValidarPositivos (float num);
 
-/** \brief Funcion Validacion de numero <= a 12
- *
- * \param num Es el numero a validar
- * \return retorno Devuelve 1 si es <= sino 0
- *
- */
-float funValidarMenorIgualdoce(float num);
-
 /** \brief  Funcion Validacion de numero con coma
  *
  * \param num Es el numero ingresado

@@ -17,7 +17,7 @@ int main()
     int flagDivision = 0;
     float multiplicacion;
     int flagMultiplicacion = 0;
-    int factorial;
+    long long factorial;
     int flagFactorial = 0;
     int valdivision;
     char seguir='s';
@@ -51,35 +51,35 @@ int main()
         }
         if (flagResta == 0)
         {
-        printf("4- Calcular la resta (A-B)\n");
+            printf("4- Calcular la resta (A-B)\n");
         }
         else
         {
-        printf("4- Calcular la resta (A-B) = %.3f\n",resta);
+            printf("4- Calcular la resta (A-B) = %.3f\n",resta);
         }
         if (flagDivision == 0)
         {
-        printf("5- Calcular la division (A/B)\n");
+            printf("5- Calcular la division (A/B)\n");
         }
         else
         {
-        printf("5- Calcular la division (A/B) = %.3f\n",division);
+            printf("5- Calcular la division (A/B) = %.3f\n",division);
         }
         if (flagMultiplicacion == 0)
         {
-        printf("6- Calcular la multiplicacion (A*B)\n");
+            printf("6- Calcular la multiplicacion (A*B)\n");
         }
         else
         {
-        printf("6- Calcular la multiplicacion (A*B) = %.3f\n",multiplicacion);
+            printf("6- Calcular la multiplicacion (A*B) = %.3f\n",multiplicacion);
         }
         if (flagFactorial == 0)
         {
-        printf("7- Calcular el factorial (A!)\n");
+            printf("7- Calcular el factorial (A!)\n");
         }
         else
         {
-        printf("7- Calcular el factorial (A!) = %d\n",factorial);
+            printf("7- Calcular el factorial (A!) = %d\n",factorial);
         }
         printf("8- Calcular todas las operacione\n");
         printf("9- Salir\n");
@@ -138,7 +138,7 @@ int main()
             factorial= funFactorial(operA);
             if(factorial != 0)
             {
-                printf("El factorial de %.f es de: %d\n", operA,factorial);
+                printf("El factorial de %.f es de: %lli\n", operA,factorial);
                 flagFactorial = 1;
                 system("pause");
                 system("cls");
@@ -174,7 +174,7 @@ int main()
             factorial= funFactorial(operA);
             if(factorial != 0)
             {
-                printf("El factorial de %.f es de: %d\n", operA,factorial);
+                printf("El factorial de %.f es de: %lli\n", operA,factorial);
                 flagFactorial = 1;
             }
             else

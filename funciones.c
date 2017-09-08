@@ -41,15 +41,13 @@ float funMultiplicaion (float primernum,float segundonum)
 
 float funFactorial (float primernum)
 {
-    int respuesta = 1;
+    long long respuesta = 1;
     int cont;
     int validarpos;
-    int validarmenorigualdoce;
     int validarcoma;
     validarcoma = funValidarComa(primernum);
-    validarmenorigualdoce = funValidarMenorIgualdoce(primernum);
     validarpos = funValidarPositivos(primernum);
-    if (validarcoma != 0 && validarmenorigualdoce != 0 && validarpos != 0)
+    if (validarcoma != 0 && validarpos != 0)
     {
         for (cont = (int) primernum; cont > 1; cont--)
         {
@@ -83,15 +81,6 @@ float funValidarPositivos (float num)
     return retorno;
 }
 
-float funValidarMenorIgualdoce (float num)
-{
-    int retorno = 0;
-    if (num <=12)
-    {
-        retorno = 1;
-    }
-    return retorno;
-}
 
 float funValidarComa (float num)
 {
