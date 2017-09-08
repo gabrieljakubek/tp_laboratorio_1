@@ -66,10 +66,9 @@ float funFactorial (float primernum)
 float funValidarCero (float primernum,float segundonum)
 {
     int respuesta =0;
-    while (primernum != (float) 0 && segundonum != (float) 0)
+    if (segundonum != 0)
     {
         respuesta  = 1;
-        break;
     }
     return respuesta;
 }
