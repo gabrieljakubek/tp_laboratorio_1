@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1505445571 source:c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp_2_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1505447529 c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp_2_cascara\funciones.h
+
+1505447305 source:c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp_2_cascara\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
+1505573909 source:f:\tp 2 en proceso\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1505576892 f:\tp 2 en proceso\funciones.h
+
+1505574787 source:f:\tp 2 en proceso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
+1505877228 source:c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp 2 en proceso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
+1505873930 c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp 2 en proceso\funciones.h
+
+1505573909 source:c:\users\jaku\documents\carrera programacion superior\primer cuatrimestre\tp\tp 2 en proceso\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1505605146 source:g:\tp 2 en proceso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
+1505605202 g:\tp 2 en proceso\funciones.h
+
+1505573909 source:g:\tp 2 en proceso\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
