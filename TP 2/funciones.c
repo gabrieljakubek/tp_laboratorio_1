@@ -174,7 +174,7 @@ void funGrafico(EPersona lista[], int t)
         putchar('\n');
 
     }
-    printf("\t<18\t18/35\t>35\n");
+    printf("\t<18\t18/35\t>35 \n");
 }
 
 void contarEdad (EPersona lista[], int t, int contador[])
