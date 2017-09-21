@@ -45,17 +45,31 @@ int obtenerEspacioLibre(EPersona lista[], int t)
 }
 void funAlta(EPersona lista[],int t)
 {
-    int index;
+    int index, auxInt;
     index = obtenerEspacioLibre(lista,t);
     if (index != -1)
     {
         printf("Ingrese el DNI: ");
         scanf("%d", &lista[index].dni);
+        auxInt = funValidarPositivos(lista[index].dni);
+        while (auxInt != 1)
+        {
+            printf("Reingrese el DNI: ");
+            scanf("%d", &lista[index].dni);
+            auxInt = funValidarPositivos(lista[index].dni);
+        }
         printf("Ingrese el nombre: ");
         fflush(stdin);
         gets(lista[index].nombre);
         printf("Ingrese la edad: ");
         scanf("%d", &lista[index].edad);
+        auxInt = funValidarPositivos(lista[index].edad);
+        while (auxInt != 1)
+        {
+            printf("Reingrese la edad: ");
+            scanf("%d", &lista[index].edad);
+            auxInt = funValidarPositivos(lista[index].edad);
+        }
         lista[index].estado = 1;
     }
     else
@@ -213,4 +227,14 @@ int obtenerMaximo (int contador[], int t)
         }
     }
     return max;
+}
+
+int funValidarPositivos (int num)
+{
+    int retorno = 0;
+    if (num > 0)
+    {
+        retorno = 1;
+    }
+    return retorno;
 }

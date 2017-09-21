@@ -94,12 +94,20 @@ void funGrafico(EPersona lista[], int);
  */
 void contarEdad (EPersona lista[], int, int contador[]);
 
-/** \brief
- *
- * \param
- * \param
- * \return
+/**
+ * Compara cual de los vectores tiene la mayor cantidad de edades
+ * \param Vector a utilizar para obtener el maximo
+ * \param La cantidad de vectores a comparar
+ * \return Devuelve la cantidad más grande que tiene el vector
  *
  */
 int obtenerMaximo (int [], int );
+
+/** \brief Funcion Validacion de Numero positivo
+ *
+ * \param num Es el numero a validar
+ * \return retorno Devuelve 1 si es positivo sino 0
+ *
+ */
+int funValidarPositivos (int num);
 #endif // FUNCIONES_H_INCLUDED

@@ -62,3 +62,17 @@
 
 1505873930 c:\users\jaku\desktop\tp\tp 2\funciones.h
 
+1505573909 source:c:\users\jaku\desktop\asdsad\tp 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1505960860 c:\users\jaku\desktop\asdsad\tp 2\funciones.h
+
+1505961328 source:c:\users\jaku\desktop\asdsad\tp 2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
