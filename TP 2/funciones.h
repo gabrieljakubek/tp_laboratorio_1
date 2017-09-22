@@ -18,14 +18,14 @@ typedef struct
  * \return
  *
  */
-void cambiarEstado(EPersona[],int);
+void funcambiarEstado(EPersona[],int);
 
 /**
  * Genera un menu segun la informacion que se le pasa y entrega la opcion elegida
  * \param char texto Son los datos que se desean mostrar
  * \return Devuelve la opcion que se elige segun el texto
  */
-int mostrarMenu(char texto[]);
+int funmostrarMenu(char texto[]);
 
 /**
  * Permite ingresar datos a la estructura
@@ -49,7 +49,7 @@ void funBorrar(EPersona lista[],int);
  * \param int La cantidad de estucturas disponibles.
  * @return el primer indice disponible.
  */
-int obtenerEspacioLibre(EPersona lista[], int);
+int funobtenerEspacioLibre(EPersona lista[], int);
 
 /**
  * Obtiene el indice que coincide con el dni pasado por parametro.
@@ -58,7 +58,7 @@ int obtenerEspacioLibre(EPersona lista[], int);
  * \param  int La cantidad de estructuras disponibles
  * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
  */
-int buscarPorDni(EPersona lista[], int dni, int);
+int funbuscarPorDni(EPersona lista[], int dni, int);
 
 /**
  * Funcion para mostrar los datos dentro de la estructura
@@ -66,7 +66,7 @@ int buscarPorDni(EPersona lista[], int dni, int);
  * \return void
  *
  */
-void mostrarPersona(EPersona);
+void funmostrarPersona(EPersona);
 
 /**
  * Ordena la lista por nombre
@@ -92,7 +92,7 @@ void funGrafico(EPersona lista[], int);
  * \param int contador Vector para almacenar los maximos de edades segun el rango <18, >18 && <=35 y >35
  *
  */
-void contarEdad (EPersona lista[], int, int contador[]);
+void funcontarEdad(EPersona lista[], int, int contador[]);
 
 /**
  * Compara cual de los vectores tiene la mayor cantidad de edades
@@ -101,13 +101,31 @@ void contarEdad (EPersona lista[], int, int contador[]);
  * \return Devuelve la cantidad más grande que tiene el vector
  *
  */
-int obtenerMaximo (int [], int );
+int funobtenerMaximo(int [], int );
 
-/** \brief Funcion Validacion de Numero positivo
- *
- * \param num Es el numero a validar
- * \return retorno Devuelve 1 si es positivo sino 0
+/**
+ * Chequea que lo ingresado en sea un numero y que sea positivo
+ * \param int El numero ingresado
+ * \return retorno Devuelve 0 si es un numero o 1 si no lo es
  *
  */
-int funValidarPositivos (int num);
+int funchequeoNumero(int);
+
+/**
+ * Chequea que lo ingresado en sean letras
+ * \param char Las letras que se ingresaron
+ * \return int Devuelve 0 si son solo letras o 1 si no lo son
+ *
+ */
+int funchequeoLetras(char[50]);
+
+/** \brief
+ * Chequea que el DNI ingresado no este ya cargado
+ * \param EPersona Se le pasa la estructura con la que se va a trabajar.
+ * \param int t La cantidad de estructuras disponibles.
+ * \param int El DNI ingresado
+ * \return int Devuelve 0 si el DNI no esta cargado o 1 si ya esta cargado
+ *
+ */
+int funchequeoDni (EPersona lista[], int t, int);
 #endif // FUNCIONES_H_INCLUDED

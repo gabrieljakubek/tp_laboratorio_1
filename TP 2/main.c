@@ -8,11 +8,11 @@ int main()
     char seguir='s';
     int opcion;
     EPersona listaPersona[TAM];
-    cambiarEstado(listaPersona,TAM);
+    funcambiarEstado(listaPersona,TAM);
 
     do
     {
-        opcion = mostrarMenu("1- Agregar persona\n2- Borrar persona\n3- Imprimir lista ordenada por  nombre\n4- Imprimir grafico de edades\n5- Salir\nIngrese la opcion a usar:");
+        opcion = funmostrarMenu("1- Agregar persona\n2- Borrar persona\n3- Imprimir lista ordenada por  nombre\n4- Imprimir grafico de edades\n5- Salir\nIngrese la opcion a usar:");
 
         switch(opcion)
         {

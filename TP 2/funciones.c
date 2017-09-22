@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include <ctype.h>
 #include "funciones.h"
 
-void cambiarEstado(EPersona lista[],int t)
+void funcambiarEstado(EPersona lista[],int t)
 {
     int i;
     for(i=0; i<t; i++)
@@ -13,7 +14,7 @@ void cambiarEstado(EPersona lista[],int t)
     }
 }
 
-int mostrarMenu(char texto[])
+int funmostrarMenu(char texto[])
 {
     int opcion = 0;
     printf(texto);
@@ -21,11 +22,11 @@ int mostrarMenu(char texto[])
     return opcion;
 }
 
-void mostrarPersona(EPersona lista)
+void funmostrarPersona(EPersona lista)
 {
     printf("%d--%s--%d\n", lista.dni,lista.nombre,lista.edad);
 }
-int obtenerEspacioLibre(EPersona lista[], int t)
+int funobtenerEspacioLibre(EPersona lista[], int t)
 {
     int i;
     int index;
@@ -46,29 +47,43 @@ int obtenerEspacioLibre(EPersona lista[], int t)
 void funAlta(EPersona lista[],int t)
 {
     int index, auxInt;
-    index = obtenerEspacioLibre(lista,t);
+    index = funobtenerEspacioLibre(lista,t);
     if (index != -1)
     {
         printf("Ingrese el DNI: ");
         scanf("%d", &lista[index].dni);
-        auxInt = funValidarPositivos(lista[index].dni);
-        while (auxInt != 1)
+        auxInt = funchequeoNumero(lista[index].dni);
+        while (auxInt != 0)
         {
             printf("Reingrese el DNI: ");
             scanf("%d", &lista[index].dni);
-            auxInt = funValidarPositivos(lista[index].dni);
+            auxInt = funchequeoNumero(lista[index].dni);
+        }
+        auxInt = funchequeoDni(lista,t,lista[index].dni);
+        while (auxInt != 0)
+        {
+            printf("El DNI ya figura en la lista");
+            break;
         }
         printf("Ingrese el nombre: ");
         fflush(stdin);
         gets(lista[index].nombre);
+        auxInt = funchequeoLetras(lista[index].nombre);
+        while (auxInt != 0)
+        {
+            printf("Reingrese un nombre sin numeros: ");
+            fflush(stdin);
+            gets(lista[index].nombre);
+            auxInt = funchequeoLetras(lista[index].nombre);
+        }
         printf("Ingrese la edad: ");
         scanf("%d", &lista[index].edad);
-        auxInt = funValidarPositivos(lista[index].edad);
-        while (auxInt != 1)
+        auxInt = funchequeoNumero(lista[index].edad);
+        while (auxInt != 0)
         {
             printf("Reingrese la edad: ");
             scanf("%d", &lista[index].edad);
-            auxInt = funValidarPositivos(lista[index].edad);
+            auxInt = funchequeoNumero(lista[index].edad);
         }
         lista[index].estado = 1;
     }
@@ -76,10 +91,11 @@ void funAlta(EPersona lista[],int t)
     {
         printf("No hay mas espacio para ingresar personas.\n");
     }
-
+    system("pause");
+    system("cls");
 }
 
-int buscarPorDni(EPersona lista[], int dni, int t)
+int funbuscarPorDni(EPersona lista[], int dni, int t)
 {
     int i;
     int index;
@@ -105,14 +121,14 @@ void funBorrar(EPersona lista[],int t)
 
     printf("Ingrese el DNI a borrar:");
     scanf("%d",&auxDNI);
-    index = buscarPorDni(lista,auxDNI,t);
+    index = funbuscarPorDni(lista,auxDNI,t);
     if (index == -1)
     {
         printf("El DNI ingresado es inexistente!!!\n");
     }
     else
     {
-        mostrarPersona(lista[index]);
+        funmostrarPersona(lista[index]);
         printf("Esta seguro/a de borrar esta persona? s/n :");
         respuesta = getche();
         if (respuesta == 's')
@@ -126,6 +142,8 @@ void funBorrar(EPersona lista[],int t)
         }
 
     }
+    system("pause");
+    system("cls");
 }
 
 void funOrdenarporNombre(EPersona lista[], int t)
@@ -141,14 +159,14 @@ void funOrdenarporNombre(EPersona lista[], int t)
             {
                 if (lista[j].estado != 0)
                 {
-                    if(stricmp(lista[i].nombre, lista[j].nombre)>0)
+                    if(strcmp(lista[i].nombre, lista[j].nombre)>0)
                     {
                         auxEPersona=lista[i];
                         lista[i]=lista[j];
                         lista[j]=auxEPersona;
 
                     }
-                    else if(stricmp(lista[i].nombre, lista[j].nombre)==0)
+                    else if(strcmp(lista[i].nombre, lista[j].nombre)==0)
                     {
                         if(lista[i].dni > lista[j].dni)
                         {
@@ -170,8 +188,8 @@ void funGrafico(EPersona lista[], int t)
     int i, j;
     int max;
     int contador[3] = {0};
-    contarEdad(lista, t, contador);
-    max = obtenerMaximo(contador,3);
+    funcontarEdad(lista, t, contador);
+    max = funobtenerMaximo(contador,3);
     for (i = max; i > 0; i--)
     {
         for (j = 0; j < 3; j++)
@@ -189,9 +207,11 @@ void funGrafico(EPersona lista[], int t)
 
     }
     printf("\t<18\t18/35\t>35 \n");
+    system("pause");
+    system("cls");
 }
 
-void contarEdad (EPersona lista[], int t, int contador[])
+void funcontarEdad(EPersona lista[], int t, int contador[])
 {
     int i;
 
@@ -216,7 +236,7 @@ void contarEdad (EPersona lista[], int t, int contador[])
     }
 }
 
-int obtenerMaximo (int contador[], int t)
+int funobtenerMaximo(int contador[], int t)
 {
     int i, max=0;
     for (i=0; i<t; i++)
@@ -229,12 +249,60 @@ int obtenerMaximo (int contador[], int t)
     return max;
 }
 
-int funValidarPositivos (int num)
+int funchequeoNumero(int num)
 {
-    int retorno = 0;
-    if (num > 0)
+    int i = 0, cont;
+    int flag = 0;
+    char buffer[20];
+    itoa(num,buffer,10);
+    cont = strlen(buffer);
+    while (i<cont &&  flag == 0)
     {
-        retorno = 1;
+        if(isdigit(buffer[i])!=0)
+        {
+            i++;
+        }
+        else
+        {
+            flag = 1;
+        }
     }
-    return retorno;
+    return flag;
 }
+
+int funchequeoLetras(char letras[50])
+{
+    int i = 0, cont;
+    int flag = 0;
+    cont = strlen(letras);
+    while (i<cont && flag == 0)
+    {
+        if (isalpha(letras[i]) != 0)
+        {
+            i++;
+        }
+        else
+        {
+            flag = 1;
+        }
+
+    }
+    return flag;
+}
+
+int funchequeoDni(EPersona lista[], int T, int dni)
+{
+
+    int i;
+    int flag = 0;
+    for (i=0; i<T; i++)
+    {
+        if (dni == lista[i].dni)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    return flag;
+}
+
