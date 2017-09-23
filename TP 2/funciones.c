@@ -5,12 +5,13 @@
 #include <ctype.h>
 #include "funciones.h"
 
-void funcambiarEstado(EPersona lista[],int t)
+void funcambiarEstadoyDNI(EPersona lista[],int t)
 {
     int i;
     for(i=0; i<t; i++)
     {
         lista[i].estado = 0;
+        lista[i].dni = 0;
     }
 }
 
@@ -24,8 +25,22 @@ int funmostrarMenu(char texto[])
 
 void funmostrarPersona(EPersona lista)
 {
-    printf("%d--%s--%d\n", lista.dni,lista.nombre,lista.edad);
+    printf("%d\t%s\t%d\n", lista.dni,lista.nombre,lista.edad);
 }
+
+void funMostrarTodasPersonas(EPersona lista[], int t)
+{
+    int i;
+    printf("DNI\tNombre\tEdad\n");
+    for(i=0; i<t; i++)
+    {
+        if (lista[i].estado != 0)
+        {
+            funmostrarPersona(lista[i]);
+        }
+    }
+}
+
 int funobtenerEspacioLibre(EPersona lista[], int t)
 {
     int i;
@@ -44,26 +59,30 @@ int funobtenerEspacioLibre(EPersona lista[], int t)
     }
     return index;
 }
-void funAlta(EPersona lista[],int t)
+int funAlta(EPersona lista[],int t)
 {
-    int index, auxInt;
+    int index, auxInt,auxResol;
+    int flag = 0;
     index = funobtenerEspacioLibre(lista,t);
-    if (index != -1)
+    while (index != -1 && flag == 0)
     {
         printf("Ingrese el DNI: ");
-        scanf("%d", &lista[index].dni);
-        auxInt = funchequeoNumero(lista[index].dni);
-        while (auxInt != 0)
+        scanf("%d", &auxInt);
+        auxResol = funchequeoNumero(auxInt);
+        while (auxResol != 0 || auxInt > 100000000)
         {
             printf("Reingrese el DNI: ");
-            scanf("%d", &lista[index].dni);
-            auxInt = funchequeoNumero(lista[index].dni);
+            scanf("%d", &auxInt);
+            auxResol = funchequeoNumero(auxInt);
         }
-        auxInt = funchequeoDni(lista,t,lista[index].dni);
-        while (auxInt != 0)
+        auxResol = funchequeoDni(lista,t,auxInt);
+        if (auxResol != 0)
         {
-            printf("El DNI ya figura en la lista");
-            break;
+            flag = 1;
+        }
+        else
+        {
+            lista[index].dni = auxInt;
         }
         printf("Ingrese el nombre: ");
         fflush(stdin);
@@ -71,7 +90,7 @@ void funAlta(EPersona lista[],int t)
         auxInt = funchequeoLetras(lista[index].nombre);
         while (auxInt != 0)
         {
-            printf("Reingrese un nombre sin numeros: ");
+            printf("Ingrese el nombre: ");
             fflush(stdin);
             gets(lista[index].nombre);
             auxInt = funchequeoLetras(lista[index].nombre);
@@ -79,20 +98,20 @@ void funAlta(EPersona lista[],int t)
         printf("Ingrese la edad: ");
         scanf("%d", &lista[index].edad);
         auxInt = funchequeoNumero(lista[index].edad);
-        while (auxInt != 0)
+        while (auxInt != 0 || (lista[index].edad == 0 || lista[index].edad > 120))
         {
             printf("Reingrese la edad: ");
             scanf("%d", &lista[index].edad);
             auxInt = funchequeoNumero(lista[index].edad);
         }
         lista[index].estado = 1;
+        break;
     }
-    else
+    if (index == -1)
     {
-        printf("No hay mas espacio para ingresar personas.\n");
+        flag = -1;
     }
-    system("pause");
-    system("cls");
+    return flag;
 }
 
 int funbuscarPorDni(EPersona lista[], int dni, int t)
@@ -305,4 +324,3 @@ int funchequeoDni(EPersona lista[], int T, int dni)
     }
     return flag;
 }
-

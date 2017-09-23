@@ -76,17 +76,18 @@
 	<string.h>
 	"funciones.h"
 
-1506047237 source:c:\users\jaku\desktop\tp_laboratorio_1\tp 2\main.c
+1506134176 source:c:\users\jaku\desktop\tp_laboratorio_1\tp 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 
-1506053501 c:\users\jaku\desktop\tp_laboratorio_1\tp 2\funciones.h
+1506133449 c:\users\jaku\desktop\tp_laboratorio_1\tp 2\funciones.h
 
-1506047215 source:c:\users\jaku\desktop\tp_laboratorio_1\tp 2\funciones.c
+1506134040 source:c:\users\jaku\desktop\tp_laboratorio_1\tp 2\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
+	<ctype.h>
 	"funciones.h"
 

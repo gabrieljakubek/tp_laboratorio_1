@@ -18,7 +18,7 @@ typedef struct
  * \return
  *
  */
-void funcambiarEstado(EPersona[],int);
+void funcambiarEstadoyDNI(EPersona[],int);
 
 /**
  * Genera un menu segun la informacion que se le pasa y entrega la opcion elegida
@@ -33,7 +33,7 @@ int funmostrarMenu(char texto[]);
  * \param int La cantidad de estucturas disponibles
  *
  */
-void funAlta (EPersona[],int);
+int funAlta (EPersona[],int);
 
 /**
  * Borra la persona buscada
@@ -67,6 +67,14 @@ int funbuscarPorDni(EPersona lista[], int dni, int);
  *
  */
 void funmostrarPersona(EPersona);
+
+/**
+ * Funcion para mostrar todas las personas cargadas en la estructura
+ * \param lista[] EPersona Estructura a usar
+ * \param int Tamaño de la estructura
+ *
+ */
+void funMostrarTodasPersonas(EPersona lista[], int);
 
 /**
  * Ordena la lista por nombre
